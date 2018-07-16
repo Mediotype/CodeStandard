@@ -71,9 +71,9 @@ EOF;
                     $currentToken['line'],
                     self::ISSUE_INVALID_FORMAT
                 );
-            }
 
-            return;
+                return;
+            }
         }
     }
 
