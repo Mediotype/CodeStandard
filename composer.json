@@ -1,0 +1,44 @@
+{
+    "name": "mediotype/code-standard",
+    "description": "Mediotype Engineering Code Standard",
+    "type": "project",
+    "version": "1.0.0-alpha",
+    "require-dev": {
+        "magento/magento2-base": "^2.2",
+        "phpunit/phpunit": "~6.2.0",
+        "squizlabs/php_codesniffer": "3.2.2",
+        "phpmd/phpmd": "@stable",
+        "pdepend/pdepend": "2.5.2",
+        "friendsofphp/php-cs-fixer": "~2.2.1",
+        "lusitanian/oauth": "~0.8.10",
+        "sebastian/phpcpd": "2.0.4"
+    },
+    "config": {
+        "use-include-path": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Magento\\": "app/code/Magento/",
+            "Mediotype\\": "src/Mediotype/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": false,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ]
+}
