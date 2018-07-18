@@ -10,7 +10,7 @@ pipeline {
 
       }
       steps {
-        sh '''ls -larth /opt/jenkins-host-storage/
+        sh '''chmod 0600 $GITHUB_SSH_KEY
 GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
     git clone git@github.com:Mediotype/CodeStandard.git'''
       }
