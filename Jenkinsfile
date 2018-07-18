@@ -10,7 +10,8 @@ pipeline {
 
       }
       steps {
-        sh '''ls -larth $JENKINS_HOME/host-storage
+        sh '''ls -larth /var/jenkins_home/host-storage
+exit 1
 GIT_SSH_COMMAND="ssh -i $JENKINS_HOME/github.pem" \\
     git clone git@github.com:Mediotype/CodeStandard.git'''
       }
