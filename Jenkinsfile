@@ -22,14 +22,14 @@ pipeline {
       }
       steps {
         unstash 'archive.tar.gz'
-        sh '''mkdir build
+        sh '''mkdir build test
 tar -xzf artifact.tar.gz -C build
 
 chmod 0600 $GITHUB_SSH_KEY
 GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
-    git clone git@github.com:Mediotype/CodeStandard.git
+    git clone git@github.com:Mediotype/CodeStandard.git test
 
-cd CodeStandard
+cd test
 composer install
 
 php vendor/bin/phpcs \\
