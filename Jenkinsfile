@@ -22,7 +22,9 @@ pipeline {
       }
       steps {
         unstash 'archive.tar.gz'
-        sh '''mkdir build
+        sh '''ls -larth
+
+mkdir build
 tar -xzf archive.tar.gz -C build
 
 chmod 0600 $GITHUB_SSH_KEY
