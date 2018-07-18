@@ -25,6 +25,8 @@ pipeline {
         sh '''mkdir build test
 tar -xzf artifact.tar.gz -C build
 
+ls -larth
+
 chmod 0600 $GITHUB_SSH_KEY
 GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
     git clone git@github.com:Mediotype/CodeStandard.git test
