@@ -10,7 +10,7 @@ pipeline {
 
       }
       steps {
-        sh '''ls -larth /opt/
+        sh '''ls -larth /opt/jenkins-host-storage/
 GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY" \\
     git clone git@github.com:Mediotype/CodeStandard.git'''
       }
