@@ -13,22 +13,30 @@ pipeline {
       }
     }
     stage('Test') {
-      agent {
-        docker {
-          args '--mount type=bind,source=/opt/jenkins-host-storage,target=/opt/jenkins-host-storage'
-          image 'devilbox/php-fpm:5.6-work'
+      parallel {
+        stage('Test') {
+          agent {
+            docker {
+              args '--mount type=bind,source=/opt/jenkins-host-storage,target=/opt/jenkins-host-storage'
+              image 'devilbox/php-fpm:5.6-work'
+            }
+
+          }
+          steps {
+            unstash 'archive.tar.gz'
+            sh '''mkdir build
+tar -xzf archive.tar.gz -C build'''
+          }
         }
-
-      }
-      steps {
-        unstash 'archive.tar.gz'
-        sh '''# Deploy Code Standard
-
-#chmod 0600 $GITHUB_SSH_KEY
-#GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
-#    git clone git@github.com:Mediotype/CodeStandard.git
+        stage('Code Standard') {
+          steps {
+            sh '''chmod 0600 $GITHUB_SSH_KEY
+GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
+    git clone git@github.com:Mediotype/CodeStandard.git
 
 ls -larth'''
+          }
+        }
       }
     }
   }
