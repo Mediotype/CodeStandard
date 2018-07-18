@@ -10,9 +10,7 @@ pipeline {
 
       }
       steps {
-        sh '''ls -larth /var/jenkins_home/host-storage
-exit 1
-GIT_SSH_COMMAND="ssh -i $JENKINS_HOME/github.pem" \\
+        sh '''GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY" \\
     git clone git@github.com:Mediotype/CodeStandard.git'''
       }
     }
@@ -20,5 +18,6 @@ GIT_SSH_COMMAND="ssh -i $JENKINS_HOME/github.pem" \\
   environment {
     SLACK_CHANNEL = '#test-webhook'
     COMPOSER_AUTH = '{"http-basic":{"repo.magento.com":{"username":"7be9dd180a9910520ab95cab36eafb0f","password":"f7a1df7121c40bbdbb332dfabcd3afd9"}}}'
+    GITHUB_SSH_KEY = '/var/jenkins_home/host-storage/github-mediotype-main.pem'
   }
 }
