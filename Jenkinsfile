@@ -5,7 +5,7 @@ pipeline {
       agent {
         docker {
           image 'devilbox/php-fpm:5.6-work'
-          args '--mount type=bind,source="/opt/jenkins-host-storage"/target,target=/var/jenkins_home/host-storage'
+          args '--mount type=bind,source=/opt/jenkins-host-storage,target=/var/jenkins_home/host-storage'
         }
 
       }
