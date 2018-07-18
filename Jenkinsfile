@@ -22,7 +22,7 @@ pipeline {
       }
       steps {
         unstash 'archive.tar.gz'
-        sh '''mkdir build test
+        sh '''mkdir -p build test
 tar -xzf artifact.tar.gz -C build
 
 ls -larth
