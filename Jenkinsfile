@@ -16,7 +16,7 @@ pipeline {
       agent {
         docker {
           args '--mount type=bind,source=/opt/jenkins-host-storage,target=/opt/jenkins-host-storage'
-          image 'devilbox/php-fpm:5.6-work'
+          image 'devilbox/php-fpm:7.1-work'
         }
 
       }
