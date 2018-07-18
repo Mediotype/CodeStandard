@@ -9,7 +9,9 @@ pipeline {
 
       }
       steps {
-        sh 'git clone git@github.com:Mediotype/CodeStandard.git'
+        sh '''echo "Target Channel: $SLACK_CHANNEL"
+
+git clone git@github.com:Mediotype/CodeStandard.git'''
       }
     }
   }
