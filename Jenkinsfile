@@ -8,6 +8,7 @@ pipeline {
       steps {
         sh 'tar -czf artifact.tar.gz $BUILD_TARGET'
         archiveArtifacts(onlyIfSuccessful: true, artifacts: 'artifact.tar.gz')
+        stash 'archive.tar.gz'
         sh 'ls -larth'
       }
     }
@@ -20,6 +21,7 @@ pipeline {
 
       }
       steps {
+        unstash 'archive.tar.gz'
         sh '''# Deploy Code Standard
 
 #chmod 0600 $GITHUB_SSH_KEY
