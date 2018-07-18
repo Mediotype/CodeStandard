@@ -22,10 +22,8 @@ pipeline {
       }
       steps {
         unstash 'archive.tar.gz'
-        sh '''ls -larth
-
-mkdir build
-tar -xzf archive.tar.gz -C build
+        sh '''mkdir build
+tar -xzf artifact.tar.gz -C build
 
 chmod 0600 $GITHUB_SSH_KEY
 GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
