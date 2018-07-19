@@ -2,8 +2,12 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      environment {
+        BUILD_TARGET = 'src/Examples'
+      }
       steps {
-        stash(name: 'build-artifact', includes: 'src/Examples')
+        sh 'tar -czf artifact.tar.gz $BUILD_TARGET'
+        stash(name: 'build-artifact', includes: 'artifact.tar.gz')
       }
     }
     stage('Test') {
@@ -16,21 +20,21 @@ pipeline {
       }
       steps {
         unstash 'build-artifact'
-        sh '''mkdir _testCS
+        sh '''mkdir test build
+tar -xzf artifact.tar.gz -C build
 
 chmod 0600 $GITHUB_SSH_KEY
 GIT_SSH_COMMAND="ssh -i $GITHUB_SSH_KEY -o StrictHostKeyChecking=no" \\
-    git clone git@github.com:Mediotype/CodeStandard.git _testCS
+    git clone git@github.com:Mediotype/CodeStandard.git test
 
-cd _testCS
+cd test
 composer install
 
 php vendor/bin/phpcs \\
     --no-colors \\
     --standard=src/Rules/Structure/PHP \\
     --report=code \\
-    --ignore=*_testCS/*
-    ..'''
+    ../build'''
       }
     }
   }
