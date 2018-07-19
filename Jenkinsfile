@@ -34,6 +34,7 @@ php vendor/bin/phpcs \\
     --no-colors \\
     --standard=src/Rules/Structure/PHP \\
     --report=code \\
+    --report-width=auto
     ../build'''
       }
     }
