@@ -19,9 +19,8 @@ pipeline {
 
       }
       steps {
-        sh '''ls -larth ./test/
-
-mkdir test build
+        unstash 'build-artifact'
+        sh '''rm -rf test build && mkdir test build
 tar -xzf artifact.tar.gz -C build
 
 chmod 0600 $GITHUB_SSH_KEY
@@ -36,7 +35,6 @@ php vendor/bin/phpcs \\
     --standard=src/Rules/Structure/PHP \\
     --report=code \\
     ../build'''
-        unstash 'build-artifact'
       }
     }
   }
