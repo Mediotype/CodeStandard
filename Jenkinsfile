@@ -20,7 +20,9 @@ pipeline {
       }
       steps {
         unstash 'build-artifact'
-        sh '''mkdir test build
+        sh '''ls -larth .
+
+mkdir test build
 tar -xzf artifact.tar.gz -C build
 
 chmod 0600 $GITHUB_SSH_KEY
