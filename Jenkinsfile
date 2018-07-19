@@ -20,7 +20,7 @@ pipeline {
       }
       steps {
         unstash 'build-artifact'
-        sh '''ls -larth .
+        sh '''ls -larth ./test/
 
 mkdir test build
 tar -xzf artifact.tar.gz -C build
