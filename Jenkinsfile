@@ -19,7 +19,6 @@ pipeline {
 
       }
       steps {
-        unstash 'build-artifact'
         sh '''ls -larth ./test/
 
 mkdir test build
@@ -37,6 +36,7 @@ php vendor/bin/phpcs \\
     --standard=src/Rules/Structure/PHP \\
     --report=code \\
     ../build'''
+        unstash 'build-artifact'
       }
     }
   }
