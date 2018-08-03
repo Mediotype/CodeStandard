@@ -1,4 +1,4 @@
-<code_scheme name="Project" version="173">
+<code_scheme name="Mediotype" version="173">
   <PHPCodeStyleSettings>
     <option name="COMMA_AFTER_LAST_ARRAY_ELEMENT" value="true" />
     <option name="PHPDOC_WRAP_LONG_LINES" value="true" />
@@ -91,11 +91,11 @@
           <rule>
             <match>
               <AND>
+                <ABSTRACT>true</ABSTRACT>
                 <METHOD>true</METHOD>
-                <NAME>setUp</NAME>
-                <PROTECTED>true</PROTECTED>
               </AND>
             </match>
+            <order>BY_NAME</order>
           </rule>
         </section>
         <section>
@@ -103,9 +103,32 @@
             <match>
               <AND>
                 <METHOD>true</METHOD>
-                <visibility />
+                <PUBLIC>true</PUBLIC>
               </AND>
             </match>
+            <order>BY_NAME</order>
+          </rule>
+        </section>
+        <section>
+          <rule>
+            <match>
+              <AND>
+                <METHOD>true</METHOD>
+                <PROTECTED>true</PROTECTED>
+              </AND>
+            </match>
+            <order>BY_NAME</order>
+          </rule>
+        </section>
+        <section>
+          <rule>
+            <match>
+              <AND>
+                <METHOD>true</METHOD>
+                <PRIVATE>true</PRIVATE>
+              </AND>
+            </match>
+            <order>BY_NAME</order>
           </rule>
         </section>
       </rules>
