@@ -13,5 +13,5 @@
     </rule>
     <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
     <rule ref="Squiz.Commenting.ClassComment" />
-    <rule ref="vendor/magento/magento2-base/dev/tests/static/framework/Magento/ruleset.xml" />
+    <rule ref="../../../../vendor/magento/magento2-base/dev/tests/static/framework/Magento/ruleset.xml" />
 </ruleset>
