@@ -5,7 +5,7 @@
     <arg name="colors" />
     <arg value="sp" />
     <ini name="memory_limit" value="256M" />
-    <rule ref="src" />
+    <rule ref="../../../../src" />
     <rule ref="Squiz.Commenting.FunctionComment">
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
         <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
