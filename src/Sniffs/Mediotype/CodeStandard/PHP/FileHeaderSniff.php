@@ -19,7 +19,6 @@ class FileHeaderSniff implements Sniff
 
     private $template = <<<EOF
 <?php
-
 /**
  * @author    Mediotype Development <diveinto@mediotype.com>
  * @copyright %d Mediotype. All Rights Reserved.
