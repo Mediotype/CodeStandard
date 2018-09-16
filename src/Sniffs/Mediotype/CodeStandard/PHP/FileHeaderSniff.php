@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @author    Mediotype Development <diveinto@mediotype.com>
  * @copyright 2018 Mediotype. All Rights Reserved.
@@ -19,7 +18,6 @@ class FileHeaderSniff implements Sniff
 
     private $template = <<<EOF
 <?php
-
 /**
  * @author    Mediotype Development <diveinto@mediotype.com>
  * @copyright %d Mediotype. All Rights Reserved.
@@ -106,7 +104,7 @@ EOF;
     private function getErrorMessage(array $currentToken, array $standardToken)
     {
         if ($standardToken['content'] === PHP_EOL) {
-            return sprintf('Invalid token, expected line-break.');
+            return sprintf('Invalid token, unexpected line-break.');
         }
 
         return sprintf('Invalid token, expected "%s".', $standardToken['content']);
