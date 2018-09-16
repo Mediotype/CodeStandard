@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @author    Mediotype Development <diveinto@mediotype.com>
  * @copyright 2018 Mediotype. All Rights Reserved.
