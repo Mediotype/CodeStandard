@@ -30,8 +30,8 @@ class InterceptorSeeAnnotationSniff implements Sniff
 
         // Reasons we shouldn't continue
         if (count($fqnParts) < 3 // Doesn't match a Magento-style structure
-            || ($fqnParts[2] !== 'Module' && $fqnParts[2] !== 'Plugin') // Is not Module\ or Plugin\
-            || ($fqnParts[2] === 'Module' && $fqnParts[3] !== 'Plugin') // Is not Module\Plugin
+            || ($fqnParts[2] !== 'Model' && $fqnParts[2] !== 'Plugin') // Is not Model\ or Plugin\
+            || ($fqnParts[2] === 'Model' && $fqnParts[3] !== 'Plugin') // Is not Model\Plugin
         ) {
             return;
         }
