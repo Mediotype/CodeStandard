@@ -51,6 +51,13 @@ class InterceptorSeeAnnotationSniff implements Sniff
         return [T_CLASS];
     }
 
+    /**
+     * Assemble the FQN from the available tokens.
+     *
+     * @param File $file
+     * @param $className
+     * @return string
+     */
     private function assembleFqn(File $file, $className)
     {
         $namespace = $file->findNext(T_NAMESPACE, 0);
@@ -61,12 +68,18 @@ class InterceptorSeeAnnotationSniff implements Sniff
 
         $multipleNamespaces = $file->findNext(T_NAMESPACE, $namespace + 1);
         if ($multipleNamespaces || !$namespace) {
-            return;
+            return '';
         }
 
         return $fqn . '\\' . $className;
     }
 
+    /**
+     * Validate the given file for annotations at the class level.
+     *
+     * @param File $file
+     * @param $stackPtr
+     */
     private function validateInterceptorAtClassLevel(File $file, $stackPtr)
     {
         $tokens = $file->getTokens();
@@ -106,6 +119,14 @@ class InterceptorSeeAnnotationSniff implements Sniff
         }
     }
 
+    /**
+     * Validate the given file for annotations at the method level.
+     *
+     * @param File $file
+     * @param $stackPtr
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException
+     * @throws \PHP_CodeSniffer\Exceptions\TokenizerException
+     */
     private function validateInterceptorAtMethodLevel(File $file, $stackPtr)
     {
         $tokens = $file->getTokens();

@@ -1,13 +1,13 @@
 <?php
 /**
  * @author    Mediotype Development <diveinto@mediotype.com>
- * @copyright 2018 Mediotype. All Rights Reserved.
+ * @copyright 2019 Mediotype. All Rights Reserved.
  */
 
 namespace Mediotype\Module\Plugin;
 
 /**
- * Class InterceptorStructureMess
+ * Class InterceptorStructureMissingSee
  */
 class InterceptorStructureMissingSee
 {
@@ -23,6 +23,13 @@ class InterceptorStructureMissingSee
         return $parameters;
     }
 
+    /**
+     * After set Name
+     *
+     * @param object $subject
+     * @param mixed $result
+     * @return mixed
+     */
     public function afterSetName($subject, $result)
     {
         return $result;
