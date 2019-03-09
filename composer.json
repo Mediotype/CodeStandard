@@ -3,6 +3,7 @@
     "description": "Mediotype Engineering Code Standard",
     "type": "project",
     "version": "1.0.0-alpha",
+    "license": "proprietary",
     "require-dev": {
         "magento/magento2-base": "^2.2",
         "phpunit/phpunit": "~6.2.0",
