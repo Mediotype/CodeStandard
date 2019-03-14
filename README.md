@@ -21,8 +21,6 @@ To run sniffs manually, run:
 
 ## PHPStorm Code Sniff Integration
 
-`@todo` Fill in setup steps
-
 To add Mediotype sniffs to PHPStorm code sniffer integration, first make sure you have CodeStandard repository cloned locally and that composer dependencies are installed.
 
 Then, in PHPStorm, navigate to:
