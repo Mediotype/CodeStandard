@@ -35,9 +35,15 @@ Open Code Sniffer tab, click "..." icon,  click file system icon near _PHP Code 
 
 When it's done, you can use _Validate_ button to check if everything is configured correctly.
 
-Close all configuration windows.
+Close configuration window, and in the main PHPStorm configuration window navigate to:
 
-Custom ruleset should now be used by both background and manual inspection.   
+* Preferences > Editor > Inspections
+
+Locate PHP Code Sniffer in the inspections list, change _Coding Standard_ to _Custom_ and open selector. In the new window click on file system icon and browse ruleset.xml from the CodingStandard repository. Finally, it can look as follows:
+
+    /Volumes/Sites/CodeStandard/src/Rules/Structure/PHP/ruleset.xml
+
+Close configuration window, now custom ruleset should now be used by both background and manual inspection.   
 
 # PHPStorm Code Style Scheme
 
