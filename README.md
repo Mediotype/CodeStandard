@@ -21,7 +21,27 @@ To run sniffs manually, run:
 
 ## PHPStorm Code Sniff Integration
 
-`@todo` Fill in setup steps
+To add Mediotype sniffs to PHPStorm code sniffer integration, first make sure you have CodeStandard repository cloned locally and that composer dependencies are installed.
+
+Then, in PHPStorm, navigate to:
+
+* Preferences > Languages & Frameworks > PHP > Quality Tools
+
+Open Code Sniffer tab, click "..." icon,  click file system icon near _PHP Code Sniffer path_ field and then select path to phpcs binary from CodingStandard project. At the end it could look similar to following one:
+
+    /Volumes/Sites/CodeStandard/vendor/bin/phpcs
+
+When it's done, you can use _Validate_ button to check if everything is configured correctly.
+
+Close configuration window, and in the main PHPStorm configuration window navigate to:
+
+* Preferences > Editor > Inspections
+
+Locate PHP Code Sniffer in the inspections list, change _Coding Standard_ to _Custom_ and open selector. In the new window click on file system icon and browse ruleset.xml from the CodingStandard repository. Finally, it can look as follows:
+
+    /Volumes/Sites/CodeStandard/src/Rules/Structure/PHP/ruleset.xml
+
+Close configuration window, now custom ruleset should now be used by both background and manual inspection.   
 
 # PHPStorm Code Style Scheme
 
