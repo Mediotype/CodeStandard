@@ -15,12 +15,13 @@ use PHP_CodeSniffer\Files\File;
 class FileHeaderSniff implements Sniff
 {
     const ISSUE_INVALID_FORMAT = 'InvalidHeaderFormat';
+    const YEAR_PLACEHOLDER = 'YYYY';
 
     private $template = <<<EOF
 <?php
 /**
  * @author    Mediotype Development <diveinto@mediotype.com>
- * @copyright %d Mediotype. All Rights Reserved.
+ * @copyright YYYY Mediotype. All Rights Reserved.
  */
 
 EOF;
@@ -60,6 +61,15 @@ EOF;
             /** @var array $currentToken */
             $currentToken = $currentFileTokens[$stackPointer++];
 
+            // Replace year with placeholder
+            if (\strpos($standardToken['content'], self::YEAR_PLACEHOLDER) !== false) {
+                $currentToken['content'] = \preg_replace(
+                    '/\d{4}/',
+                    self::YEAR_PLACEHOLDER,
+                    $currentToken['content']
+                );
+            }
+
             if ($currentToken
                 && $currentToken['type'] !== $standardToken['type']
                 || $currentToken['content'] !== $standardToken['content']
@@ -84,11 +94,7 @@ EOF;
     private function createStandardFile(File $compareFile)
     {
         $file = new File('', $compareFile->ruleset, $compareFile->config);
-
-        $file->setContent(
-            sprintf($this->template, date('Y'))
-        );
-
+        $file->setContent($this->template);
         $file->parse();
 
         return $file;
