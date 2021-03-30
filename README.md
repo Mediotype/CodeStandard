@@ -6,17 +6,14 @@ A collection of code tests designed to enforce the Mediotype way.
 
 For local development, deploy as follows:
 
-    git clone git@github.com:Mediotype/CodeStandard.git
-    cd CodeStandard
-    composer install
+    composer require --dev mediotype/code-standard:@stable
 
 # How to Use
 
 To run sniffs manually, run:
 
     php vendor/bin/phpcs \
-        --standard=src/Rules/Structure/PHP \
-        --report=code \
+        --standard=Mediotype \
         /path/to/your/code
 
 ## PHPStorm Code Sniff Integration
@@ -29,7 +26,7 @@ Then, in PHPStorm, navigate to:
 
 Open Code Sniffer tab, click "..." icon,  click file system icon near _PHP Code Sniffer path_ field and then select path to phpcs binary from CodingStandard project. At the end it could look similar to following one:
 
-    /Volumes/Sites/CodeStandard/vendor/bin/phpcs
+    ./vendor/bin/phpcs
 
 When it's done, you can use _Validate_ button to check if everything is configured correctly.
 
@@ -39,7 +36,7 @@ Close configuration window, and in the main PHPStorm configuration window naviga
 
 Locate PHP Code Sniffer in the inspections list, change _Coding Standard_ to _Custom_ and open selector. In the new window click on file system icon and browse ruleset.xml from the CodingStandard repository. Finally, it can look as follows:
 
-    /Volumes/Sites/CodeStandard/src/Rules/Structure/PHP/ruleset.xml
+    ./vendor/mediotype/code-standard/ruleset.xml
 
 Close configuration window, now custom ruleset should now be used by both background and manual inspection.   
 
@@ -47,7 +44,7 @@ Close configuration window, now custom ruleset should now be used by both backgr
 
 In addition to code sniffs, a PHP code style scheme is provided with this standard:
 
-    src/Rules/Structure/PHP/PHPStormProjectConfig.xml
+    ./PHPStormProjectConfig.xml
 
 To apply this configuration, download it to your local machine. Then, navigate to:
 
@@ -63,4 +60,4 @@ Your IDE will not automatically format your code according to our standard.
 The provided code style scheme can also arrange your PHP class structure to conform to our standard. To use the feature,
 open any PHP class you wish to arrange, then while it is the active file, select _Code > Rearrange Code_.
 
-(c) 2018 Mediotype
+(c) 2018-2021 Blue Acorn iCi

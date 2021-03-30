@@ -1,6 +1,2 @@
-/*
-!/.gitignore
-!/src
-!/README.md
-!/composer.json
-!/composer.lock
+/vendor/
+/composer.lock

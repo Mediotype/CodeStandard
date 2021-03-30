@@ -1,17 +1,19 @@
 {
     "name": "mediotype/code-standard",
     "description": "Mediotype Engineering Code Standard",
-    "type": "project",
+    "type": "phpcodesniffer-standard",
     "license": "proprietary",
-    "require-dev": {
-        "magento/magento-coding-standard": "@stable"
+    "require": {
+        "magento/magento-coding-standard": "@stable",
+        "squizlabs/php_codesniffer": "^3.5"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": false,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/magento/magento-coding-standard"
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "dealerdirect/phpcodesniffer-composer-installer": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mediotype\\CodeStandard\\": "src/"
         }
-    ]
+    }
 }
