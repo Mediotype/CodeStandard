@@ -24,11 +24,18 @@ class FileHeaderSniff implements Sniff
      */
     public $forceCurrentYear = false;
 
+    /**
+     * The copyright owner of the code being checked.  Defaults to "Blue Acorn iCi"
+     *
+     * @var string
+     */
+    public $codeOwner = 'Blue Acorn iCi';
+
     private $template = <<<EOF
 <?php
 /**
- * @author    Mediotype Development <diveinto@mediotype.com>
- * @copyright YYYY Mediotype. All Rights Reserved.
+ * @author    Blue Acorn iCi <code@blueacorn.com>
+ * @copyright YYYY OWNER. All Rights Reserved.
  */
 
 EOF;
@@ -52,7 +59,7 @@ EOF;
      */
     public function process(File $file, $stackPointer)
     {
-        $template = $this->template;
+        $template = str_replace('OWNER', $this->codeOwner, $this->template);
         if ($this->forceCurrentYear) {
             $template = str_replace('YYYY', date('Y'), $template);
         }
