@@ -4,7 +4,7 @@
  * @copyright 2018 Mediotype. All Rights Reserved.
  */
 
-namespace Mediotype\CodeStandard\PHP;
+namespace Mediotype\Sniffs\PHP;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
