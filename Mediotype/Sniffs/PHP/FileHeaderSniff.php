@@ -6,8 +6,8 @@
 
 namespace Mediotype\Sniffs\PHP;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 /**
  * Enforces a consistent corporate file header.
@@ -16,6 +16,13 @@ class FileHeaderSniff implements Sniff
 {
     const ISSUE_INVALID_FORMAT = 'InvalidHeaderFormat';
     const YEAR_PLACEHOLDER = 'YYYY';
+
+    /**
+     * If TRUE, the year specified in the copyright header MUST be the current year
+     *
+     * @var bool
+     */
+    public $forceCurrentYear = false;
 
     private $template = <<<EOF
 <?php
@@ -45,10 +52,15 @@ EOF;
      */
     public function process(File $file, $stackPointer)
     {
+        $template = $this->template;
+        if ($this->forceCurrentYear) {
+            $template = str_replace('YYYY', date('Y'), $template);
+        }
+
         /** @var array $currentFileTokens */
         $currentFileTokens = $file->getTokens();
         /** @var File $standardFile */
-        $standardFile = $this->createStandardFile($file);
+        $standardFile = $this->createStandardFile($file, $template);
         /** @var array $standardFileTokens */
         $standardFileTokens = array_slice($standardFile->getTokens(), $stackPointer);
 
@@ -62,7 +74,7 @@ EOF;
             $currentToken = $currentFileTokens[$stackPointer++];
 
             // Replace year with placeholder
-            if (\strpos($standardToken['content'], self::YEAR_PLACEHOLDER) !== false) {
+            if (!$this->forceCurrentYear && \strpos($standardToken['content'], self::YEAR_PLACEHOLDER) !== false) {
                 $currentToken['content'] = \preg_replace(
                     '/\d{4}/',
                     self::YEAR_PLACEHOLDER,
@@ -71,8 +83,10 @@ EOF;
             }
 
             if ($currentToken
-                && $currentToken['type'] !== $standardToken['type']
-                || $currentToken['content'] !== $standardToken['content']
+                && (
+                    $currentToken['type'] !== $standardToken['type']
+                    || $currentToken['content'] !== $standardToken['content']
+                )
             ) {
                 $file->addErrorOnLine(
                     $this->getErrorMessage($currentToken, $standardToken),
@@ -91,10 +105,10 @@ EOF;
      * @param File $compareFile
      * @return File
      */
-    private function createStandardFile(File $compareFile)
+    private function createStandardFile(File $compareFile, $template)
     {
         $file = new File('', $compareFile->ruleset, $compareFile->config);
-        $file->setContent($this->template);
+        $file->setContent($template);
         $file->parse();
 
         return $file;
