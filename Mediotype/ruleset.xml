@@ -3,7 +3,6 @@
     <description>Tests conformance to the Mediotype PHP code standard.</description>
     <arg name="extensions" value="php,phtml,graphqls/GraphQL"/>
     <rule ref="Magento2"/>
-    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
 
     <rule ref="Mediotype.PHP.FileHeader">
         <severity>5</severity>
