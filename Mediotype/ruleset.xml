@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<ruleset name="Mediotype" namespace="Mediotype\CodeStandard\PHP">
+<ruleset name="Mediotype">
     <description>Tests conformance to the Mediotype PHP code standard.</description>
     <arg name="extensions" value="php,phtml,graphqls/GraphQL"/>
-    <rule ref="../../../magento/magento-coding-standard/Magento2/ruleset.xml"/>
+    <rule ref="Magento2"/>
     <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
 
-    <rule ref="Mediotype.PHP.FileHeaderSniff">
+    <rule ref="Mediotype.PHP.FileHeader">
         <severity>5</severity>
         <type>warning</type>
     </rule>
-    <rule ref="Mediotype.PHP.InterceptorSeeAnnotationSniff">
+    <rule ref="Mediotype.PHP.InterceptorSeeAnnotation">
         <severity>5</severity>
         <type>warning</type>
     </rule>
