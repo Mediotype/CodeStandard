@@ -34,7 +34,7 @@ class FileHeaderSniff implements Sniff
     private $template = <<<EOF
 <?php
 /**
- * @author    Blue Acorn iCi <code@blueacorn.com>
+ * @author    Blue Acorn iCi <code@blueacornici.com>
  * @copyright YYYY OWNER. All Rights Reserved.
  */
 
